@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './components/Header';
-import Home from './components/Home';
+
+import Routes from './routes';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -8,8 +8,7 @@ import './App.css';
 function App() {
   return (
     <>
-       <Header />
-       <Home />
+      <Routes />
     </>
   );
 }
