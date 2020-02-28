@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Form from './Form';
+
 function Header() {
     return (
         <header>
@@ -15,10 +17,7 @@ function Header() {
                         <Link className="nav-link" to='/series'>Todas as Séries</Link>
                         </li>
                     </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Buscar Série" aria-label="Search" />
-                        <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
-                    </form>
+                    <Form />
                 </div>
             </nav>
         </header>
