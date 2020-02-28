@@ -12,7 +12,7 @@ function Header() {
                         <Link className="nav-link" to='/'>Início</Link>
                         </li>
                         <li className="nav-item">
-                        <Link className="nav-link" to='/'>Todas as Séries</Link>
+                        <Link className="nav-link" to='/series'>Todas as Séries</Link>
                         </li>
                     </ul>
                     <form className="form-inline my-2 my-lg-0">

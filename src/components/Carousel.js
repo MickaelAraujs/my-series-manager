@@ -16,7 +16,7 @@ function Carousel({ series }) {
     return (
         <CarouselProvider className='carousel'
             naturalSlideWidth={100}
-            naturalSlideHeight={125}
+            naturalSlideHeight={70}
             totalSlides={series.length}
         >
             <div className='carousel-container'>

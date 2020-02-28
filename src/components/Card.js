@@ -30,7 +30,7 @@ function CardSeries({ imgURL, title, sinopse }) {
                 <CardMedia
                 className={classes.media}
                 image={imgURL}
-                title="Contemplative Reptile"
+                title={title}
                 />
                 <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
