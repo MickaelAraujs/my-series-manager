@@ -15,9 +15,12 @@ import {
 const useStyles = makeStyles({
     root: {
       maxWidth: 345,
+      maxHeight: 360
     },
     media: {
-      height: 140,
+      height: 130,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover'  
     },
 });
 
