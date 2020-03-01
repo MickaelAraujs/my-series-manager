@@ -1,8 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+//app
+
 const app = express();
 app.use(express.json());
+
+//db
 
 mongoose.connect('mongodb://localhost:27017/seriesmanager',{
     useNewUrlParser: true,
@@ -11,16 +15,14 @@ mongoose.connect('mongodb://localhost:27017/seriesmanager',{
 
 require('./models/Serie');
 
-const Serie = mongoose.model('Serie');
+//rotas
 
-app.get('/series',async (request,response) =>{
-    const res = await Serie.find(request.query);
-    return response.json(res);
-});
+const SerieController = require('./controllers/SerieController');
 
-app.post('/series', async (request,response) => {
-    const res = await Serie.create(request.body);
-    return response.json(res);
-})
+app.get('/series', SerieController.index);
+app.get('/series/:id', SerieController.show);
+app.put('/series/:id', SerieController.update);
+app.delete('/series/:id', SerieController.destroy);
+app.post('/series', SerieController.store);
 
 app.listen(3333);
