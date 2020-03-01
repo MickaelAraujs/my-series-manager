@@ -2,34 +2,21 @@ import React, { useState, useEffect } from 'react';
 import api from '../services/api';
 import CardSeries from './Card';
 
-function Results() {
+function Results({ name }) {
     const [ serie, setSerie ] = useState({});
 
     useEffect(() => {
-        async function loadSerie() {
-            const response = await api.get('/shows?q=narcos');
-            const { name } = response.data;
-            let { summary } = response.data;
-            const { original } = response.data.image;
-
-            summary = summary.replace('<p>','');
-            summary = summary.replace('</p>','');
-            summary = summary.replace('<b>','');
-            summary = summary.replace('</b>','');
-
-            setSerie({
-                name,
-                summary,
-                original
-            });
+        async function loadSeries() {
+            const response = await api.get(`&query=${name}`);
+            setSerie(response.data.results[0]);
         }
 
-        loadSerie();
-    }, []);
+        loadSeries();
+    }, [name]);
 
     return (
         <div className='container'>
-            <CardSeries title={serie.name} imgURL={serie.original} sinopse={serie.summary} />
+          <CardSeries key={serie.id} title={serie.original_name} sinopse={serie.overview} imgURL={`https://image.tmdb.org/t/p/w500${serie.backdrop_path}`} />
         </div>
     );
 }

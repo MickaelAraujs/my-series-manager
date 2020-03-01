@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
 html,body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background: #F7F7F2;
-    font-family: 'Zilla Slab', sans-serif;
+    font-family: 'Roboto', sans-serif ;
 }
 
 .slide-button {

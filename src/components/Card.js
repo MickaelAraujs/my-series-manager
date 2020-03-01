@@ -15,10 +15,10 @@ import {
 const useStyles = makeStyles({
     root: {
       maxWidth: 345,
-      maxHeight: 360
+      maxHeight: 800
     },
     media: {
-      height: 130,
+      height: 150,
       backgroundPosition: 'center',
       backgroundSize: 'cover'  
     },
@@ -36,7 +36,7 @@ function CardSeries({ imgURL, title, sinopse }) {
                 title={title}
                 />
                 <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                <Typography gutterBottom variant="h5" component="h3">
                    {title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
