@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const SerieSchema = new mongoose.Schema({
-    serie_id: {
-        type: Number,
-        required: true
-    },
     name: {
         type: String,
         required: true
