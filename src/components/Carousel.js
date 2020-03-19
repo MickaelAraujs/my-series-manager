@@ -16,21 +16,21 @@ function Carousel({ series }) {
     return (
         <CarouselProvider className='carousel'
             naturalSlideWidth={100}
-            naturalSlideHeight={70}
+            naturalSlideHeight={100}
             totalSlides={series.length}
         >
             <div className='carousel-container'>
-                <ButtonBack className='slide-button'>
+                <ButtonBack  className='slide-button'>
                     <ArrowBackIos />
                 </ButtonBack>
-                <Slider>
+                <Slider style={{marginTop: 30}}>
                     {
                         series.map(serie => (
                             <Slide key={series.indexOf(serie)} index={series.indexOf(serie)}>
-                                <CardSeries 
-                                    imgURL={serie.imgURL}
-                                    title={serie.title}
-                                    sinopse={serie.sinopse}
+                                <CardSeries
+                                    imgURL={serie.background_url}
+                                    title={serie.name}
+                                    sinopse={serie.description}
                                 />
                             </Slide>
                         ))

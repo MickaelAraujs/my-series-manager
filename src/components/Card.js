@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
-
 import {
     Card,
     CardActionArea,
@@ -12,19 +10,7 @@ import {
     Typography
 } from '@material-ui/core';
 
-const useStyles = makeStyles({
-    root: {
-      maxWidth: 345,
-      maxHeight: 800
-    },
-    media: {
-      height: 150,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover'  
-    },
-});
-
-function CardSeries({ imgURL, title, sinopse }) {
+export default function CardSeries({ imgURL, title, sinopse }) {
     const classes = useStyles();
 
     return (
@@ -36,16 +22,16 @@ function CardSeries({ imgURL, title, sinopse }) {
                 title={title}
                 />
                 <CardContent>
-                <Typography gutterBottom variant="h5" component="h3">
+                <Typography gutterBottom variant="h5" component="h3" className={classes.cardTitle}>
                    {title}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" color="textSecondary" className={classes.cardText} component="p">
                     {sinopse}
                 </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" className={classes.cardButton}>
                 Ver Detalhes
                 </Button>
             </CardActions>
@@ -53,4 +39,27 @@ function CardSeries({ imgURL, title, sinopse }) {
     );
 }
 
-export default CardSeries;
+const useStyles = makeStyles({
+    root: {
+      maxWidth: 345,
+      position: 'relative'
+    },
+    media: {
+      height: 150,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover'  
+    },
+    cardTitle: {
+        marginTop: 8
+    },
+    cardText: {
+        height: 70
+    },
+    cardButton: {
+        position: 'absolute',
+        top: 150,
+        right: 10,
+        fontWeight: 'bold'
+    }
+});
+

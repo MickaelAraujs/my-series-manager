@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from 'react';
+
 import api from '../services/api';
 import CardSeries from './Card';
 
 function Results({ name }) {
-    const [ serie, setSerie ] = useState({});
+    const [ search, setSearch ] = useState({});
 
     useEffect(() => {
-        async function loadSeries() {
-            const response = await api.get(`&query=${name}`);
-            setSerie(response.data.results[0]);
+        async function handleSearch() {
+            const response = await api.get(`/search?serie=${name}`);
+            setSearch(response.data);
         }
 
-        loadSeries();
+        handleSearch();
     }, [name]);
+
+    async function storeSerie() {
+        await api.post('/series', search);
+    }
 
     return (
         <div className='container'>
-          <CardSeries key={serie.id} title={serie.original_name} sinopse={serie.overview} imgURL={`https://image.tmdb.org/t/p/w500${serie.backdrop_path}`} />
+          <CardSeries key={search.name} title={search.name} sinopse={search.description} imgURL={search.background_url} />
+          <button onClick={storeSerie} type='button' className='btn btn-dark' style={{marginTop: '25px'}}>Adicionar</button>
         </div>
     );
 }
