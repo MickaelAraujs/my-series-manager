@@ -10,9 +10,9 @@ module.exports = {
 
             //procurando na api do tmdb série que vem da query da request
             const apiResponse = await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=pt-BR&query=${serie}`);
-            
+         
             const { name, poster_path, backdrop_path, overview, id } = apiResponse.data.results[0]; //apenas o primeiro item do array é relevante
-
+            
             const details = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&language=pt-BR`);
 
             const { number_of_episodes, number_of_seasons } = details.data;

@@ -9,9 +9,14 @@ module.exports = {
         return response.json(series);
     },
     async store(request, response) {
-        const serie = await Serie.create(request.body);
+        const { name } = request.body;
+        let serie =  await Serie.findOne({ name });
 
-        return response.json(serie);
+        if(!serie) {
+            serie = await Serie.create(request.body);
+
+            return response.json(serie);
+        }
     },
     async show(request, response) {
         const serie = await Serie.findById(request.params.id);
