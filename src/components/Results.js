@@ -21,7 +21,12 @@ function Results({ name }) {
 
     return (
         <div className='container'>
-          <CardSeries key={search.name} title={search.name} sinopse={search.description} imgURL={search.background_url} />
+          <CardSeries
+            title={search.name}
+            sinopse={search.description}
+            imgURL={search.background_url}
+            id={search.name}
+           />
           <button onClick={storeSerie} type='button' className='btn btn-dark' style={{marginTop: '25px'}}>Adicionar</button>
         </div>
     );

@@ -15,14 +15,24 @@ function Home() {
         getSeries();
     }, []);
 
+    if (series.length === 0) {
+        return (
+            <div className='container'>
+                <div className='alert alert-warning' role='alert'>
+                    Nenhuma série encontrada! verifique se o servidor está conectado .
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className='container'>
             <h2 className='title'>vistas</h2>
-            <Carousel series={series} />
+            <Carousel series={series} status='assistida' />
             <h2 className='title'>para ver</h2>
-            <Carousel series={series} />
+            <Carousel series={series} status='assistir' />
             <h2 className='title'>vendo</h2>
-            <Carousel series={series} />
+            <Carousel series={series} status='assistindo' />
         </div>
     );
 }

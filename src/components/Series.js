@@ -21,7 +21,13 @@ function Series() {
             <div className='series-grid'>
                 {
                     series.map(serie => (
-                        <CardSeries key={serie.name} imgURL={serie.background_url} title={serie.name} sinopse={serie.description} />
+                        <CardSeries
+                            key={serie.name}
+                            imgURL={serie.background_url}
+                            title={serie.name}
+                            sinopse={serie.description}
+                            id={serie._id}
+                        />
                     ))
                 }
             </div>

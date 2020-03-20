@@ -6,11 +6,11 @@ import {
     CardActions,
     CardContent,
     CardMedia,
-    Button,
     Typography
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
-export default function CardSeries({ imgURL, title, sinopse }) {
+export default function CardSeries({ imgURL, title, sinopse}) {
     const classes = useStyles();
 
     return (
@@ -22,18 +22,18 @@ export default function CardSeries({ imgURL, title, sinopse }) {
                 title={title}
                 />
                 <CardContent>
-                <Typography gutterBottom variant="h5" component="h3" className={classes.cardTitle}>
-                   {title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" className={classes.cardText} component="p">
-                    {sinopse}
-                </Typography>
+                    <Typography gutterBottom variant="h5" component="h3" className={classes.cardTitle}>
+                        {title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" className={classes.cardText} component="p">
+                        {sinopse}
+                    </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary" className={classes.cardButton}>
-                Ver Detalhes
-                </Button>
+                <Link to={`/series/${title}`} size="small" color="primary" className={classes.cardButton}>
+                    Ver Detalhes
+                </Link>
             </CardActions>
         </Card>
     );
@@ -59,7 +59,11 @@ const useStyles = makeStyles({
         position: 'absolute',
         top: 150,
         right: 10,
-        fontWeight: 'bold'
-    }
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        fontSize: 14,
+        marginTop: 10,
+        marginBottom: 20,
+    },
 });
 

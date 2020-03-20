@@ -11,10 +11,10 @@ function Header() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                        <Link className="nav-link" to='/'>Início</Link>
+                            <Link className="nav-link" to='/'>Início</Link>
                         </li>
                         <li className="nav-item">
-                        <Link className="nav-link" to='/series'>Todas as Séries</Link>
+                            <Link className="nav-link" to='/series'>Todas as Séries</Link>
                         </li>
                     </ul>
                     <Form />
