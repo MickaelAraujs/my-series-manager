@@ -27,11 +27,11 @@ function Home() {
 
     return (
         <div className='container'>
-            <h2 className='title'>vistas</h2>
+            <h2 className='title'>séries assistidas</h2>
             <Carousel series={series} status='assistida' />
-            <h2 className='title'>para ver</h2>
+            <h2 className='title'>para assistir</h2>
             <Carousel series={series} status='assistir' />
-            <h2 className='title'>vendo</h2>
+            <h2 className='title'>assistindo</h2>
             <Carousel series={series} status='assistindo' />
         </div>
     );

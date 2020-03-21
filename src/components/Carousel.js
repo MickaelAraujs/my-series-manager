@@ -42,6 +42,7 @@ function Carousel({ series, status }) {
                                     imgURL={serie.background_url}
                                     title={serie.name}
                                     sinopse={serie.description}
+                                    status={serie.status}
                                 />
                             </Slide>
                         ))

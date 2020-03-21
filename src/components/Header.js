@@ -6,7 +6,7 @@ import Form from './Form';
 function Header() {
     return (
         <header>
-            <nav className="navbar navbar-expand-lg navbar-dark" style={{background: '#414042'}}>
+            <nav className="navbar navbar-expand-lg navbar-dark" style={{background: '#3F0B81'}}>
                 <Link className="navbar-brand" to='/'>MySeries Manager</Link>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">

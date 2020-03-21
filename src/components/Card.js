@@ -10,7 +10,7 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-export default function CardSeries({ imgURL, title, sinopse}) {
+export default function CardSeries({ imgURL, title, sinopse, status }) {
     const classes = useStyles();
 
     return (
@@ -31,7 +31,15 @@ export default function CardSeries({ imgURL, title, sinopse}) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Link to={`/series/${title}`} size="small" color="primary" className={classes.cardButton}>
+                <Link
+                    to={{
+                    pathname: `/series/${title}`,
+                    state: {
+                        status: status,
+                    }}}
+                    size='small'
+                    className={classes.cardButton}
+                >
                     Ver Detalhes
                 </Link>
             </CardActions>
@@ -50,7 +58,7 @@ const useStyles = makeStyles({
       backgroundSize: 'cover'  
     },
     cardTitle: {
-        marginTop: 8
+        marginTop: 15
     },
     cardText: {
         height: 70
@@ -59,11 +67,10 @@ const useStyles = makeStyles({
         position: 'absolute',
         top: 150,
         right: 10,
-        fontWeight: 'bold',
         textTransform: 'uppercase',
         fontSize: 14,
         marginTop: 10,
-        marginBottom: 20,
+        color: '#3F0B81'
     },
 });
 

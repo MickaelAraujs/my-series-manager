@@ -14,7 +14,10 @@ function Routes() {
             <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/series' component={Series} />
-                <Route exact path='/series/:name' render={props => <Details name={props.match.params.name} />} />
+                <Route exact path='/series/:name' render={props => <Details
+                                                                      status={props.location.state.status}
+                                                                      name={props.match.params.name} />}
+                                                                    />
                 <Route exact path='/results/:name' render={props => <Results name={props.match.params.name} />} />
             </Switch>
         </BrowserRouter>

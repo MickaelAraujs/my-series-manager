@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import api from '../services/api';
 import CardSeries from './Card';
 
 function Results({ name }) {
+
     const [ search, setSearch ] = useState({});
+    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         async function handleSearch() {
@@ -15,8 +18,13 @@ function Results({ name }) {
         handleSearch();
     }, [name]);
 
+    if (success) {
+        return <Redirect to='/series' />
+    }
+    
     async function storeSerie() {
         await api.post('/series', search);
+        setSuccess(true);
     }
 
     return (
@@ -25,9 +33,9 @@ function Results({ name }) {
             title={search.name}
             sinopse={search.description}
             imgURL={search.background_url}
-            id={search.name}
+            status={search.status}
            />
-          <button onClick={storeSerie} type='button' className='btn btn-dark' style={{marginTop: '25px'}}>Adicionar</button>
+          <button onClick={storeSerie} type='button' className='btn btn-primary' style={{marginTop: '25px'}}>Adicionar</button>
         </div>
     );
 }

@@ -1,24 +1,60 @@
 import React, { useState, useEffect } from 'react';
 
 import api from '../services/api';
-import removeSpecialCaracteres from '../utils/removeSpecialCaracteres';
+import DetailsUpdate from './DetailsUpdate';
 
-export default function Details({ name }) {
-    const parsedName = removeSpecialCaracteres(name); //removendo acentos da string
-
+export default function Details({ name, status }) {
+    
     const [serie, setSerie] = useState({});
     const [genresArray, setGenresArray] = useState([]);
-
+    
+    const [select, setSelect] = useState(status);
+    const [badge, setBadge] = useState(() => handleColorChange(select));
+    
     useEffect(() => {
         async function loadData() {
-            const response = await api.get(`/search?serie=${parsedName}`);
-            setSerie(response.data);
-            const { genres } = response.data;
-            setGenresArray(genres);
+            try {
+                const response = await api.get(`/serie?name=${name}`);
+
+                //verificando se o objeto está vazio
+                if (Object.entries(response.data).length !== 0) {
+                    setSerie(response.data);
+                    const { genres } = response.data;
+                    setGenresArray(genres);
+                }
+       
+            } catch (err) {
+                console.warn(`Erro: Série não encontrada!  ${err}`);
+            }
         }
 
         loadData();
-    }, [parsedName]);
+    }, [name]);
+
+     if (Object.entries(serie).length === 0) {
+        return (
+            <div className='container'>
+                <div className='alert alert-warning' role='alert'>
+                    oops... essa série não foi existe ou não foi adicionada à lista.
+                </div>
+            </div>
+        );
+    }
+
+    function handleColorChange(item) {
+        if (item === 'assistir') {
+            return 'primary';
+        } else if (item === 'assistida') {
+            return 'success';
+        } else if (item === 'assistindo') {
+            return 'warning';
+        }
+    }
+
+    function handleSelect(e) {
+        setSelect(e.target.value);
+        setBadge(handleColorChange(e.target.value));
+    }
 
     const headerStyle = {
         height: '50vh',
@@ -52,9 +88,9 @@ export default function Details({ name }) {
                                     </p>
                                 </div>
                                 <div className='detailsBadge'>
-                                    <span className='badge badge-primary'>{serie.status}</span>
+                                    <span className={`badge badge-${badge}`}>{select}</span>
                                     <div className='form-group'>
-                                        <select className='form-control' id='exampleFormControlSelect1'>
+                                        <select defaultValue={select} className='form-control' onChange={e => handleSelect(e)} id='exampleFormControlSelect1'>
                                             <option>assistida</option>
                                             <option>assistir</option>
                                             <option>assistindo</option>
@@ -66,6 +102,7 @@ export default function Details({ name }) {
                     </div>
                 </div>
             </header>
+            <DetailsUpdate serie={serie} status={select} />
         </div>
     );
 }

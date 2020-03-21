@@ -26,7 +26,7 @@ function Series() {
                             imgURL={serie.background_url}
                             title={serie.name}
                             sinopse={serie.description}
-                            id={serie._id}
+                            status={serie.status}
                         />
                     ))
                 }
