@@ -19,7 +19,13 @@ module.exports = {
         }
     },
     async show(request, response) {
-        const serie = await Serie.findById(request.params.id);
+        const { name } = request.query;
+        
+        const serie = await Serie.findOne({name});
+
+        if (!serie) {
+            return response.json({});
+        }
 
         return response.json(serie);
     },
