@@ -1,0 +1,12 @@
+.gridTitle {
+    font-size: 30px;
+    margin-bottom: 25px;
+    font-family: 'Baloo Da 2', cursive;
+}
+
+.series-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
+    margin-bottom: 30px;
+}

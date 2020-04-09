@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
 import {
     CarouselProvider,
     Slider,
@@ -10,7 +9,11 @@ import {
 
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
-import CardSeries from './Card';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
+
+import CardSeries from '../Card';
+
+import './styles.css';
 
 function Carousel({ series, status }) {
     const [filter, setFilter] = useState([]);
@@ -32,7 +35,7 @@ function Carousel({ series, status }) {
         >
             <div className='carousel-container'>
                 <ButtonBack  className='slide-button'>
-                    <ArrowBackIos />
+                    <MdKeyboardArrowLeft size={45}  />
                 </ButtonBack>
                 <Slider style={{marginTop: 30}}>
                     {
@@ -49,7 +52,7 @@ function Carousel({ series, status }) {
                     }
                 </Slider>    
                 <ButtonNext className='slide-button'>
-                    <ArrowForwardIos />
+                    <MdKeyboardArrowRight size={45} />
                 </ButtonNext>
             </div>
         </CarouselProvider>

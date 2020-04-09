@@ -1,0 +1,8 @@
+.navOptions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navOptions button {
+    width: 120px;
+}

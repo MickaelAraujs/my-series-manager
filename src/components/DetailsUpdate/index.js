@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import api from '../services/api';
+import api from '../../services/api';
+
+import './styles.css';
 
 export default function DetailsUpdate({ serie, status }) {
     const [success, setSuccess] = useState(false);

@@ -2,10 +2,11 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Header from './components/Header';
-import Home from './components/Home';
-import Series from './components/Series';
-import Details from './components/Details';
-import Results from './components/Results';
+
+import Home from './components/pages/Home';
+import Series from './components/pages/Series';
+import Details from './components/pages/Details';
+import Results from './components/pages/Results';
 
 function Routes() {
     return (

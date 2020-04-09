@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import api from '../services/api';
-import DetailsUpdate from './DetailsUpdate';
+import api from '../../../services/api';
+import DetailsUpdate from '../../DetailsUpdate';
+
+import './styles.css';
 
 export default function Details({ name, status }) {
     

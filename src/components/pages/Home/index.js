@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import api from '../services/api';
-import Carousel from './Carousel';
+import api from '../../../services/api';
+import Carousel from '../../Carousel';
+
+import './styles.css';
 
 function Home() {
     const [series, setSeries] = useState([]);
@@ -27,12 +29,12 @@ function Home() {
 
     return (
         <div className='container'>
-            <h2 className='title'>séries assistidas</h2>
-            <Carousel series={series} status='assistida' />
-            <h2 className='title'>para assistir</h2>
-            <Carousel series={series} status='assistir' />
             <h2 className='title'>assistindo</h2>
             <Carousel series={series} status='assistindo' />
+            <h2 className='title'>para assistir</h2>
+            <Carousel series={series} status='assistir' />
+            <h2 className='title'>assistidas</h2>
+            <Carousel series={series} status='assistida' />
         </div>
     );
 }
