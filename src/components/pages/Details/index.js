@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import api from '../../../services/api';
+
 import DetailsUpdate from '../../DetailsUpdate';
+import Seasons from '../../Seasons';
 
 import './styles.css';
 
@@ -12,6 +14,9 @@ export default function Details({ name, status }) {
     
     const [select, setSelect] = useState(status);
     const [badge, setBadge] = useState(() => handleColorChange(select));
+
+    const [seasonStatus, setSeasonStatus] = useState(false);
+    const [seasonData, setSeasonData] = useState([]);
     
     useEffect(() => {
         async function loadData() {
@@ -56,6 +61,11 @@ export default function Details({ name, status }) {
     function handleSelect(e) {
         setSelect(e.target.value);
         setBadge(handleColorChange(e.target.value));
+    }
+
+    function provideSeasons(seasons) {
+        setSeasonStatus(!seasonStatus);
+        setSeasonData(seasons);
     }
 
     const headerStyle = {
@@ -104,7 +114,8 @@ export default function Details({ name, status }) {
                     </div>
                 </div>
             </header>
-            <DetailsUpdate serie={serie} status={select} />
+            <DetailsUpdate serie={serie} status={select} provideSeasons={provideSeasons} />
+            { seasonStatus ? <Seasons seasons={seasonData} /> : '' }
         </div>
     );
 }

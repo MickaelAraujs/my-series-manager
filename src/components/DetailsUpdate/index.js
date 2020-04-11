@@ -5,7 +5,7 @@ import api from '../../services/api';
 
 import './styles.css';
 
-export default function DetailsUpdate({ serie, status }) {
+export default function DetailsUpdate({ serie, status, provideSeasons }) {
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
@@ -25,12 +25,22 @@ export default function DetailsUpdate({ serie, status }) {
         setSuccess(true);
     }
 
+    async function listSeasons() {
+        const response = await api.get(`/seasons/${serie._id}`);
+        provideSeasons(response.data);
+
+        window.scroll({ 
+            top: 645,
+            behavior: 'smooth'
+         });
+    }
+
     return (
         <div className='container'>
             <nav className='navOptions'>
-                <button  className='btn btn-warning'>Editar</button>
-                <button  onClick={deleteSerie} className='btn btn-danger'>Excluir</button>
-                <button className='btn btn-dark'>Temporadas</button>
+                <button  className='btn btn-dark'>Editar</button>
+                <button  onClick={deleteSerie} className='btn btn-dark'>Excluir</button>
+                <button onClick={listSeasons} className='btn btn-dark'>Temporadas</button>
             </nav>
         </div>
     );

@@ -1,0 +1,26 @@
+.episode-content h5 {
+    font-size: 23px;
+}
+
+.episode-content {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.episode-content img {
+    width: 350px;
+}
+
+.episode-content .episode-info {
+    margin-left: 20px;
+}
+
+.episode-info label {
+    display: flex;
+    align-items: center;
+}
+
+.episode-info label input {
+    margin-left: 5px;
+}

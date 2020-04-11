@@ -12,3 +12,7 @@ html,body {
 .container {
     margin-top: 30px;
 }
+
+.season-content, .episode-content {
+    margin-top: 30px;
+}
