@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MdSearch } from 'react-icons/md';
 
 function Form() {
     const [ inputName, setInputName ] = useState('');
@@ -11,7 +12,9 @@ function Form() {
             <input className='form-control mr-sm-2' type='search' placeholder='Buscar Série' aria-label='Search'
             value={inputName} onChange={e => setInputName(e.target.value)}
             />
-            <Link onClick={() => setInputName('')} to={`/results/${inputName}`} className='btn btn-outline-light my-2 my-sm-0'>Buscar</Link>
+            <Link onClick={() => setInputName('')} to={`/results/${inputName}`} className='btn btn-outline-light my-2 my-sm-0'>
+                <MdSearch size={25} />
+            </Link>
         </form>
     );
 }

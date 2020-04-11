@@ -35,7 +35,7 @@ function Results({ name }) {
             imgURL={search.background_url}
             status={search.status}
            />
-          <button onClick={storeSerie} type='button' className='btn btn-primary' style={{marginTop: '25px'}}>Adicionar</button>
+          <button onClick={storeSerie} type='button' className='btn btn-dark' style={{marginTop: '25px'}}>Adicionar</button>
         </div>
     );
 }
