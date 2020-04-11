@@ -15,6 +15,7 @@ mongoose.connect('mongodb://localhost:27017/seriesmanager',{
 });
 
 require('./src/models/Serie');
+require('./src/models/Season');
 
 //rotas
 app.use('/',require('./src/routes'));

@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const SerieSchema = new mongoose.Schema({
+    original_name: {
+        type: String
+    },
     name: {
         type: String,
         required: true
@@ -32,7 +35,13 @@ const SerieSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true
-    }
+    },
+    seasons: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Season'
+        }
+    ]
 });
 
 mongoose.model('Serie',SerieSchema);

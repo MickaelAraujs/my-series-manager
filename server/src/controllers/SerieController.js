@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const Serie = mongoose.model('Serie');
 
+const SeasonController = require('./SeasonController');
+
 module.exports = {
     async index(request, response) {
         const series = await Serie.find(request.query);
@@ -35,8 +37,12 @@ module.exports = {
         return response.json(serie);
     },
     async destroy(request, response) {
-        await Serie.findByIdAndDelete(request.params.id);
+        const { id } = request.params;
 
+        await Serie.findByIdAndDelete(id, { useFindAndModify: true });
+
+        await SeasonController.destroy({ params: { id } });
+        
         return response.send();
     }
 }

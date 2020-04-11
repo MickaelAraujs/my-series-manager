@@ -11,7 +11,7 @@ module.exports = {
             //procurando na api do tmdb série que vem da query da request
             const apiResponse = await axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&language=pt-BR&query=${serie}`);
          
-            const { name, poster_path, backdrop_path, overview, id } = apiResponse.data.results[0]; //apenas o primeiro item do array é relevante
+            const { original_name, name, poster_path, backdrop_path, overview, id } = apiResponse.data.results[0]; //apenas o primeiro item do array é relevante
             
             const details = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${apiKey}&language=pt-BR`);
 
@@ -23,8 +23,9 @@ module.exports = {
 
             const poster_url = `https://image.tmdb.org/t/p/w500${poster_path}`;
             const background_url = `https://image.tmdb.org/t/p/w500${backdrop_path}`;
-
+            
             const data = {
+                original_name,
                 name,
                 poster_url,
                 background_url,
@@ -32,7 +33,7 @@ module.exports = {
                 genres,
                 number_of_episodes,
                 number_of_seasons,
-                status
+                status,
             };
             
             return response.json(data);
